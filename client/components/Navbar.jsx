@@ -19,16 +19,18 @@ class NavBar extends Component {
             Home
           </button>
         </Link>
-        <Link to="/create" className='addRecipe'>
+        <Link to="/find-save-blog-recipe" className='findRecipe'>
+            <button >Blog-to-Plate</button>
+        </Link>
+        <Link to="/getBlogRecipes" className='getRecipe'>
+            <button >Saved Blog Recipes</button>
+        </Link>
+        <Link to="/yourRecipes" className='findRecipe'>
+            <button >Your Recipes</button>
+        </Link>
+        <Link to="/addRecipe" className='addRecipe'>
             <button >Add Recipe</button>
         </Link>
-        <Link to="/getRecipes" className='getRecipe'>
-            <button >Show Recipes</button>
-        </Link>
-        <Link to="/findRecipes" className='findRecipe'>
-            <button >Find Recipe</button>
-        </Link>
-         
         
       </nav>
     );

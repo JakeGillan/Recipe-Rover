@@ -3,6 +3,7 @@ const router = express.Router();
 
 //  import any middleware here 
 const recipeController = require('../controllers/recipeController')
+const blogController = require('../controllers/blogController')
 
 // ADD STARTER DATA REQUEST ROUTE HANDLER HERE
 // app.get('/', (req, res) => {
@@ -30,12 +31,28 @@ router.get('/getRecipes', recipeController.getRecipes,
   }
 );
 
+router.get('/blogRecipes', blogController.getRecipes,
+  (req,res) => {  
+    console.log('in get blog recipes')
+    return res.status(200).json(res.locals.blogRecipes);
+  }
+);
+
 router.post('/recipes', recipeController.addRecipe, 
     (req, res) => {
         console.log('inside post ')
         return res.status(200).json(res.locals.newRecipe)
     }
-)
+);
+
+router.post('/blogs', blogController.addRecipe, 
+    (req, res) => {
+        console.log(res.locals.blogRecipe)
+        return res.status(200).json(res.locals.blogRecipe)
+    }
+);
+
+
 
 
 module.exports = router;

@@ -56,15 +56,12 @@ class FindRecipe extends Component{
                 <div>
                     <div class = "inputbox">
                         <input type="text" value={this.state.url} onChange={this.handleURLChange} placeholder="Enter URL"/>
-                        <button class ="secondBtn" onClick={this.fetchHTML}>Fetch HTML</button>
+                        <button class ="secondBtn" onClick={this.fetchHTML}>Fetch Recipe</button>
                     </div>
                     <div class = "display">
                         <iframe class="name" srcDoc={this.state.nameHTML}></iframe>
                         <iframe class="ingredients" srcDoc={this.state.ingredientsHTML}></iframe>
                         <iframe class="instructins" srcDoc={this.state.instructionsHTML}></iframe>
-                        {/* <div dangerouslySetInnerHTML={{__html: this.state.nameHTML}}></div> */}
-                        {/* <div dangerouslySetInnerHTML={{__html: this.state.ingredientsHTML}}></div> */}
-                        {/* <div dangerouslySetInnerHTML={{__html: this.state.instructionsHTML}}></div> */}
                     </div>
 
                 </div>

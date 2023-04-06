@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-class CustomRecipe extends Component {
+class SaveBlog extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      course: '',
       url: '',
-      ingredients: '',
-      instructions: '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,9 +16,6 @@ class CustomRecipe extends Component {
   handleSubmit() {
     const defaults = {
       name: 'N/A',
-      ingredients: 'N/A',
-      course: 'N/A',
-      instructions: 'N/A',
       url: 'N/A',
     }
     const recipeInfo = {};
@@ -30,13 +24,14 @@ class CustomRecipe extends Component {
       else recipeInfo[prop] = this.state[prop];
     });
 
-    fetch('../api/recipes', {
+    fetch('../api/blogs', { // this is where we can change our router for blogs 
       method: 'POST',
       body: JSON.stringify(recipeInfo),
       headers: { 'Content-Type': 'application/json' },
     })
       .then(res => res.json())
       .then(data => {
+        console.log('sending data')
         if (Object.keys(data).length <= 1) throw 'Incorrect shape of response';
         return this.props.addRecipe([data]) // ------------------------------------ look into incoming prop 
       })
@@ -58,28 +53,14 @@ class CustomRecipe extends Component {
             <textarea name="name" placeholder="Granny's Chicken" value={this.state.name} onChange={this.handleInput} cols="50"></textarea>
         </div>
         <div className="recipeFields">
-            <label htmlFor="course">Course:</label>
-            <textarea name="course" placeholder="dinner" value={this.state.course} onChange={this.handleInput} cols="50"></textarea>
-        </div>
-        <div className="recipeFields">
             <label htmlFor="url">URL:</label>
             <textarea name="url" placeholder="YourGrannyCookBook.com" value={this.state.url} onChange={this.handleInput} cols="50"></textarea>
         </div>
-         <div className="recipeFields">
-             <label htmlFor="ingredients">Ingredients:</label>
-            <textarea name="ingredients" placeholder="chicken" value={this.state.ingredients} onChange={this.handleInput} cols="100" rows='10'></textarea>
-        </div>
-           <div className="recipeFields">
-            <label htmlFor="instructions">Instructions:</label>
-            <textarea name="instructions" placeholder="Slap the chicken" value={this.state.instructions} onChange={this.handleInput} cols="100" rows='10' ></textarea>
-          </div>
-
           <button
             type="button"
-            className="secondBtn"
+            class="secondBtn"
             onClick={this.handleSubmit}
-          >
-            Create Recipe
+          > Save Recipe
           </button>
         </article>
       </section>
@@ -87,4 +68,4 @@ class CustomRecipe extends Component {
   }
 }
 
-export default CustomRecipe;
+export default SaveBlog;

@@ -2,6 +2,18 @@ body {
     background-color: beige;
 }
 
+.image-container {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+  
+}
+
+img {
+  width: 750px;
+  height: 750px;
+}
+
 h1 {
     font-size: 2.5em;
     color: whitesmoke;
@@ -51,7 +63,7 @@ flex-direction: column;
 }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.5em;
   margin: 0;
   height: 20px;
   text-align: center;
@@ -61,6 +73,17 @@ iframe {
   height: 400px; 
   border: none; /* Remove the default iframe border */ 
 }
+.img1{
+  /* max-width: 200px;
+  max-height: 200px; */
+  /* object-fit: contain; */
+   /* /* width: 200px; */
+  /* height: 300px; */
+  /* object-fit: scale-down; */
+
+}
+
+
 .secondBtn {
   background-color: beige;
   color:darkslategrey;
@@ -68,7 +91,7 @@ iframe {
   font-size: 1.2em;
   font-weight: bold;
   transition: all 0.2s ease-in-out;
-  margin-top: 3px;
+  margin-top: 10px;
   margin-left: 3px;
   height: 3em;
 }

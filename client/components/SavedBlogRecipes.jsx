@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import RecipeDiv from './RecipeDiv.jsx';
+import SavedBlogRecipesDiv from './SavedBlogRecipesDiv.jsx'
 
-class Recipes extends Component {
+class SavedBlogRecipes extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,10 +17,10 @@ class Recipes extends Component {
   }
 
    componentDidMount() {
-    fetch('/api/getRecipes')
+    fetch('/api/blogRecipes')
       .then(res => res.json())
       .then((recipes) => {
-        console.log(recipes)
+        console.log('recipes', recipes)
         if (!Array.isArray(recipes)) recipes = [];
         return this.setState({
           recipes,
@@ -84,14 +84,11 @@ class Recipes extends Component {
     const Cards = [];
     for (let i = 0; i < recipes.length; i++){
       Cards.push(
-        <RecipeDiv
+        <SavedBlogRecipesDiv
           id= {i}
           key={i}
           name = {recipes[i].name}
-          course = {recipes[i].course}
           url = {recipes[i].url} 
-          ingredients = {recipes[i].ingredients}
-          instructions = {recipes[i].instructions}
           fetchingDetails={this.state.fetchingDetails}
           ingredientsHTML = {this.state.ingredientsHTML}
           instructionsHTML = {this.state.instructionsHTML}
@@ -117,4 +114,4 @@ class Recipes extends Component {
 
 
 
-export default Recipes;
+export default SavedBlogRecipes;
